@@ -18,6 +18,7 @@ var timeCmd = &cobra.Command{
 	Long: "时间格式转换",
 	Run: func(cmd *cobra.Command, args []string) {},
 }
+
 var nowTimeCmd = &cobra.Command{
 	Use: "now",
 	Short: "时间格式转换",

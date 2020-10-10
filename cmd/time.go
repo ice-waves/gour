@@ -35,6 +35,7 @@ var calculateTimeCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		var currentTimer time.Time
 		var layout = "2016-01-02 15:04:05"
+		location, _ := time.LoadLocation("Asia/Shanghai")
 		if calculateTime == ""{
 			currentTimer = timer.GetNowTime()
 		} else {
@@ -48,7 +49,7 @@ var calculateTimeCmd = &cobra.Command{
 				layout = "2016-01-02 15:03"
 			}
 
-			currentTimer, err = time.Parse(layout, calculateTime)
+			currentTimer, err = time.ParseInLocation(layout, calculateTime, location)
 			if err != nil {
 				t, _ := strconv.Atoi(calculateTime)
 				currentTimer = time.Unix(int64(t), 0)
